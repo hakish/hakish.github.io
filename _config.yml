@@ -19,7 +19,7 @@
 # in the templates via {{ site.myvariable }}.
 
 title: The Humble Developer
-email: kishore.hariharan@outlook.com
+email: hakish@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   A travelogue of my journey in the technology field.
 baseurl: "" # the subpath of your site, e.g. /blog
