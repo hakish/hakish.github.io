@@ -32,7 +32,7 @@ public class MyBrilliantProcessor {
   }	
 }
 
-{% end highlight %}
+{% endhighlight %}
 
 This is a code smell that we should avoid. 
 Why? For one it doesn't seem that the exception is really handled. It is not doing anything meaningful (other than logging ofcourse) from a business logic perspective and reveals a knowledge gap of business process. A good question to ask is are we catching *Contingent Exception* or a *Fault*?
