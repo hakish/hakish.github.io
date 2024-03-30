@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: The Humble Developer
+title: The Humble Developer Blog
 email: hakish@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   A travelogue of my journey in the technology field.
