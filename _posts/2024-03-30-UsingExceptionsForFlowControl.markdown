@@ -5,8 +5,8 @@ date:   2024-03-30 20:14:42 +0100
 tag:    java
 ---
 I had the below code but a colleague pointed out in a code review that using exception to control the flow is a bad idea and perhaps even an anti pattern. 
-I had to go back to the drawing and do some reading. And as it turns out this was a good advice (so plus one for code reviews). For one this is covered in
-*Effective Java - 3rd* which explicitly mentions this "Item 69 - Use Exceptions only for exceptional conditions".
+I had to go back to the drawing board and do some reading. And as it turns out this was a good advice (so plus one for code reviews). For one this is covered in
+*Effective Java - 3rd Edition* which explicitly mentions this "*Item 69 - Use Exceptions only for exceptional conditions*".
 
 {% highlight ruby %}
 
