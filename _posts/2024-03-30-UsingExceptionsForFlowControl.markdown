@@ -21,8 +21,7 @@ public Object get(String key){
 
 }
 
-{% highlight ruby %}
-
+{% endhighlight  %}
 It points to the fact that placing code in try - catch block prevents certain compiler optimizations which makes it a lot slower compared to the standard way.
 Secondly, it also violates the principle of least suprise i.e. the api should behave in a way that is very natural for the user and meets his expectations.
 
@@ -37,9 +36,9 @@ public Object get(String key, Supplier func){
 	if (value == null){
 		value = func.get();
 		cache.put(key, value);
-}
+	}
 	return value;
 }
 
-{% highlight ruby %}
+{% endhighlight  %}
 
