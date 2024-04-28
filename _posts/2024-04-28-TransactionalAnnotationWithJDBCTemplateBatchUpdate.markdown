@@ -14,17 +14,18 @@ This is something which confused me when using spring's NamedParameterJdbcTempla
 @Transactional
 public int[] insertAll (List<SaveThisObject> objsToInsert){
 	SqlParameterSources parameterSources = SqlParameterSourceUtils.createBatch(objsToInsert.toArray());
-	rturn this.jdbcTemplate.updateBatch(insertSql, parameterSources);
+	return this.jdbcTemplate.updateBatch(insertSql, parameterSources);
 
 }
 
 {% endhighlight %}
 
 ## Problem
-With the code I had observed that sometimes when the size of objsToInsert in the order of many thousands, there was nothing inserted in the table.
+With the above code I had observed that sometimes when the size of objsToInsert is in the order of many thousands, there was nothing inserted in the table.
 
 ## Analysis
-Looking at the api implementation for NamedParameterJdcTemplate udpateBatch(..) reveals that the _entire list of objects is considered as a single batch_.
+Looking at the api implementation for NamedParameterJdcTemplate udpateBatch(..) used in the snippet reveals that 
+the _entire list of objects is considered as a single batch_.
 You could  overcome this limitation using a different batchUpdate API - the one that enables you to override BatchPreparedStatementSetter's getBatchSize 
 api and chunk the list of inserts into smaller batches. A batch here is nothing but set of sql commands to be executed one for every object to be inserted
 which is added to a single PreparedStatement object. So a single batch when executed sends this bunch of commands to the database server in a single go.
@@ -35,5 +36,5 @@ That is a commit doesnt happen per batch when you have @Transactional on the met
 ## Solution
 This a good use case where we need to use _Nested Transactions_ with spring jdbc.
 The links below provide excellent explanations of how to go about doing that, many thanks to the authors of the links.
-- (http://mvpjava.com/spring-nested-transactions/)
-- (https://www.marcobehler.com/guides/spring-transaction-management-transactional-in-depth)
+- http://mvpjava.com/spring-nested-transactions/
+- https://www.marcobehler.com/guides/spring-transaction-management-transactional-in-depth
